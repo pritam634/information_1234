@@ -231,6 +231,17 @@
             </div>
         </div>
 
+        <!-- Video link -->
+        <div class="qr-row">
+            <a class="lang-btn" href="./definition.mp4">
+                <div>
+                    <div style="font-weight:700" class="lang-main">Video</div>
+                    <div style="color:var(--muted);font-size:13px">Watch a short video</div>
+                </div>
+            </a>
+        </div>
+
+
         <div class="foot">Tip: buttons are responsive — they stack on small screens. Right-click any button and choose
             "Open link in new tab" to keep this page open.</div>
     </div>
@@ -247,13 +258,13 @@
 
         function openPdf(lang) {
             // If you later want to direct to language-specific files, change logic here.
-            if(lang === 'en') {
+            if (lang === 'en') {
                 window.open(pdfUrls[0], '', 'noopener');
-            } else if(lang === 'hi') {
+            } else if (lang === 'hi') {
                 window.open(pdfUrls[1], '', 'noopener');
-            } else if(lang === 'bn') {
+            } else if (lang === 'bn') {
                 window.open(pdfUrls[2], '', 'noopener');
-            } else if(lang === 'ur') {
+            } else if (lang === 'ur') {
                 window.open(pdfUrls[3], '', 'noopener');
             }
         }
