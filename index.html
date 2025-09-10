@@ -1,22 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link to pdf file</title>
-</head>
-<body>
-    <a href="./National Highway Authority of India Overbridge Construction at Old Court Crossing.pdf" target="_blank">
-        National Highway Authority of India Overbridge Construction at Old Court Crossing
-    </a>
-    <br>
-    <a href="./राष्ट्रीय राजमार्ग प्राधिकरण (एनएचएआई).pdf" target="_blank">
-        राष्ट्रीय राजमार्ग प्राधिकरण (एनएचएआई)
-    </a>
 
-    <br>
-    <a href="./ন্যাশনাল হাইওয়ে অথরিটি অফ ইন্ডিয়া (NHAI).pdf" target="_blank">
-        ন্যাশনাল হাইওয়ে অথরিটি অফ ইন্ডিয়া (NHAI)
-    </a>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Language Buttons — Open PDF</title>
+    <!-- Google fonts for multilingual support -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #0b1220;
+            --accent: #06b6d4;
+            --muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.04);
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg, #071023 0%, #07193a 100%);
+            color: #e6eef8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 820px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .header {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 10px;
+            background: var(--glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 20px
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 0
+        }
+
+        p.lead {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        /* Button style */
+        .lang-btn {
+            -webkit-tap-highlight-color: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0.01));
+            cursor: pointer;
+            transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+            box-shadow: 0 4px 18px rgba(2, 6, 23, 0.45);
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45)
+        }
+
+        .lang-main {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent)
+        }
+
+        .lang-sub {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .lang-meta {
+            margin-left: auto;
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        /* Responsive */
+        @media (max-width:640px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                gap: 12px
+            }
+
+            .logo {
+                width: 48px;
+                height: 48px
+            }
+        }
+
+        /* Special RTL support for Urdu button */
+        .rtl {
+            direction: rtl;
+            font-family: "Noto Sans", "Noto Sans Devanagari", "Noto Sans Bengali", sans-serif
+        }
+
+        /* Small QR preview area */
+        .qr-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 14px
+        }
+
+        .qr-row img {
+            width: 84px;
+            height: 84px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.04)
+        }
+
+        /* Footer */
+        .foot {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        /* Focus styles for accessibility */
+        .lang-btn:focus {
+            outline: 3px solid rgba(6, 182, 212, 0.16);
+            transform: translateY(-6px)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card" role="region" aria-label="Language link card">
+        <div class="header">
+            <div class="logo">PDF</div>
+            <div>
+                <h1>Open document / डॉक्यूमेंट खोलें</h1>
+                <p class="lead">Click a language to open the linked PDF in that language label. The file opens in a new
+                    tab.</p>
+            </div>
+        </div>
+
+        <div class="grid">
+            <button class="lang-btn" id="btn-bn" aria-label="Open PDF in Bengali">
+                <div style="display:flex;align-items:center;width:100%">
+                    <div class="lang-main" style="font-family: 'Noto Sans Bengali', 'Noto Sans', sans-serif">বাংলা</div>
+                    <div class="lang-meta">পিডিএফ খুলুন</div>
+                </div>
+                <div class="lang-sub">National Highway Authority–এর ডকুমেন্ট খুলুন</div>
+            </button>
+
+            <button class="lang-btn" id="btn-hi" aria-label="Open PDF in Hindi">
+                <div style="display:flex;align-items:center;width:100%">
+                    <div class="lang-main" style="font-family: 'Noto Sans Devanagari', 'Noto Sans', sans-serif">हिंदी
+                    </div>
+                    <div class="lang-meta">पीडीएफ खोलें</div>
+                </div>
+                <div class="lang-sub">National Highway Authority का दस्तावेज़ खोलें</div>
+            </button>
+
+            <button class="lang-btn" id="btn-en" aria-label="Open PDF in English">
+                <div style="display:flex;align-items:center;width:100%">
+                    <div class="lang-main">English</div>
+                    <div class="lang-meta">Open PDF</div>
+                </div>
+                <div class="lang-sub">Open National Highway Authority PDF</div>
+            </button>
+
+            <button class="lang-btn" id="btn-ur" aria-label="Open PDF in Urdu">
+                <div style="display:flex;align-items:center;width:100%">
+                    <div class="lang-main" style="font-family: 'Noto Sans', serif; font-size:20px">Urdu</div>
+                    <div class="lang-meta">PDF کھولیں</div>
+                </div>
+                <div class="lang-sub">قومی شاہراہ اتھارٹی کا دستاویز کھولیں</div>
+            </button>
+
+
+        </div>
+
+        <div class="qr-row">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://pritam634.github.io/information_1234/National%20Highway%20Authority%20of%20India%20Overbridge%20Construction%20at%20Old%20Court%20Crossing.pdf"
+                alt="QR code to PDF" />
+            <div>
+                <div style="font-weight:700">QR code</div>
+                <div style="color:var(--muted);font-size:13px">Scan to open the PDF directly</div>
+            </div>
+        </div>
+
+        <div class="foot">Tip: buttons are responsive — they stack on small screens. Right-click any button and choose
+            "Open link in new tab" to keep this page open.</div>
+    </div>
+
+    <script>
+        // Link to your PDF
+        const pdfUrls = ['https://pritam634.github.io/information_1234/National%20Highway%20Authority%20of%20India%20Overbridge%20Construction%20at%20Old%20Court%20Crossing.pdf', 'https://pritam634.github.io/information_1234/%E0%A4%B0%E0%A4%BE%E0%A4%B7%E0%A5%8D%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%80%E0%A4%AF%20%E0%A4%B0%E0%A4%BE%E0%A4%9C%E0%A4%AE%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%97%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%A7%E0%A4%BF%E0%A4%95%E0%A4%B0%E0%A4%A3%20(%E0%A4%8F%E0%A4%A8%E0%A4%8F%E0%A4%9A%E0%A4%8F%E0%A4%86%E0%A4%88).pdf', 'https://pritam634.github.io/information_1234/%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B6%E0%A6%A8%E0%A6%BE%E0%A6%B2%20%E0%A6%B9%E0%A6%BE%E0%A6%87%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%20%E0%A6%85%E0%A6%A5%E0%A6%B0%E0%A6%BF%E0%A6%9F%E0%A6%BF%20%E0%A6%85%E0%A6%AB%20%E0%A6%87%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%20(NHAI).pdf'];
+
+        // Attach listeners to buttons
+        document.getElementById('btn-bn').addEventListener('click', () => openPdf('bn'));
+        document.getElementById('btn-hi').addEventListener('click', () => openPdf('hi'));
+        document.getElementById('btn-en').addEventListener('click', () => openPdf('en'));
+        document.getElementById('btn-ur').addEventListener('click', () => openPdf('ur'));
+
+        function openPdf(lang) {
+            // If you later want to direct to language-specific files, change logic here.
+            if(lang === 'en') {
+                window.open(pdfUrls[0], '', 'noopener');
+            } else if(lang === 'hi') {
+                window.open(pdfUrls[1], '', 'noopener');
+            } else if(lang === 'bn') {
+                window.open(pdfUrls[2], '', 'noopener');
+            } else if(lang === 'ur') {
+                window.open(pdfUrls[3], '', 'noopener');
+            }
+        }
+
+        // Accessibility: allow Enter/Space to trigger buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.setAttribute('tabindex', '0');
+            btn.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    btn.click();
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
